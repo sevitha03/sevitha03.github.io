@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Page with Custom Effects</title>
+  <style>
+    #image-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    #image-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+
+    .animated-text {
+      font-size: 16px;
+      text-align: center;
+      transition: font-size 1s;
+    }
+
+    #resize-div {
+      width: 300px;
+      height: 200px;
+      background-color: powderblue;
+      resize: both;
+      overflow: auto;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Web Page with Custom Effects</h1>
+
+  <h2>Animated Images</h2>
+  <div id="image-container">
+    <img src="hills.jpg" alt="Image 1">
+  </div>
+
+   <h1>Video Player</h1>
+  <ul id="video-list">
+    <li data-src="https://www.youtube.com/embed/tgBDIeXwrr0">Video 1</li>
+    <li data-src="https://www.youtube.com/embed/il_t1WVLNxk?autoplay=1">Video 2</li>
+    <li data-src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0">Video 3</li>
+  </ul>
+  
+  <div id="video-player">
+    <iframe id="video-iframe" width="640" height="360" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  
+
+  <h2>Animated Text</h2>
+  <p class="animated-text">Animated Text Demo</p>
+  
+    <h2>Resizable Div</h2>
+  <div id="resize-div">
+    <p>This div can be resized.</p>
+  </div>
+  <h1>Hide and Show Elements</h1>
+  
+  <button id="toggle-button">Hide/Show</button>
+  
+  <div id="content">
+    <p>This is some content to hide or show.</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Animated Images
+      $("#image-container img").hover(function() {
+        $(this).css("transform", "scale(1.5)");
+      }, function() {
+        $(this).css("transform", "scale(1)");
+      });
+
+      // Video Playlist
+     $(document).ready(function() {
+      $('#video-list li').click(function() {
+        var videoUrl = $(this).data('src');
+        $('#video-iframe').attr('src', videoUrl);
+      });
+    });
+      // Animated Text
+      var increaseFont = true;
+      setInterval(function() {
+        var $text = $(".animated-text");
+        var currentFontSize = parseInt($text.css("font-size"));
+
+        if (increaseFont) {
+          currentFontSize++;
+          if (currentFontSize >= 24) {
+            increaseFont = false;
+          }
+        } else {
+          currentFontSize--;
+          if (currentFontSize <= 16) {
+            increaseFont = true;
+          }
+        }
+
+        $text.css("font-size", currentFontSize + "px");
+      }, 500);
+
+      // Resizable Div
+	  $( function() {
+      $("#resize-div").resizable();
+     });
+	 $(document).ready(function() {
+      $('#toggle-button').click(function() {
+        $('#content').toggle();
+      });
+    });
+	 });
+  </script>
+</body>
+</html>

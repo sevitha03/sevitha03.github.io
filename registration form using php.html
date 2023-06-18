@@ -1,0 +1,89 @@
+<html>
+<body>
+<label for="First Name" >First Name</label><br>
+<input value="" name="First Name" id="f"><br><br>
+<label for="Last Name">Last Name</label><br>
+<input value="" name="Last Name" id="l"><br><br>
+<label for="Gender">Gender</label><br>
+<input value="" name="First Name"><br><br>
+<label for="Date of birth">Date of birth<label><br>
+<input  type="date" name="Date of birth" id="da"><br><br>
+<label for="User name">User Name</label><br>
+<input value="" name="User Name" id="u"><br><br>
+<label for="Password">Password</label><br>
+<input value="" name="Password" id="p"><br><br>
+<label for="Confirm password">Confirm password</label><br>
+<input value="" name="Confirm password"><br><br>
+<label for="Address">Address</label><br>
+<input value="" name="Address"><br><br>
+<label for="Postal Code">Postal Code</label><br>
+<input  name="Postal Code" id="postal"><br><br>
+<label for="Mobile no.">Mobile no.</label><br>
+<input id="m" name="Mobile no."><br><br>
+<label for="Email-id">Email-id</label><br>
+<input  name="Email-id" id="mail"><br><br>
+<input type="submit" onclick="verify()">Create an account<br>
+<a href="login.html"><-Back</a>
+<script>
+function verify(){
+    var a=document.getElementById("f").value;
+    var b=document.getElementById("l").value;
+    var c=document.getElementById("p").value;
+    var d=document.getElementById("da").value;
+    var e=document.getElementById("postal").value;
+    var g=document.getElementById("m").value;
+    var h=document.getElementById("mail").value;
+    var regName = /\d+$/g;                                   
+    var letterNumber = /^[0-9a-zA-Z]+$/;
+
+     if (a == "" || regName.test(a)) {
+         window.alert("First name should contain only alphabets");
+         return false;
+     }
+     if(a.length <8){
+        alert(" First Name length should not be less than 8 characters");
+        return false;
+    }
+    if (b == "" || regName.test(b)) {
+         window.alert("First name should contain only alphabets");
+         return false;
+     }
+     if(b.length <8){
+        alert(" First Name length should not be less than 8 characters");
+        return false;
+    }
+    
+    if(!u.value.match(letterNumber)) {
+        alert("Username should not contain spaces or special symbols"); 
+   return false; 
+  }
+  if(p.length<8){
+    alert("Password should not less than 8 characters in length");
+    return false;
+  }
+  var checkSpecial = /[*@!#%&()^~{}]+/.test(c);
+        checkUpper = /[A-Z]+/.test(c);
+
+        if (!checkUpper && !checkSpecial) {
+            alert("Password should contain atleast one upper case letter and a special symbol");
+        }
+      if(e.length!=6){
+        alert("Postal code should contain 6 digits only");
+      }
+      var regex = new RegExp(/(0|91)?[6-9][0-9]{9}/);
+    if (!regex.test(g)) {
+        alert("Enter a valid mobile number");
+        return false;
+    }
+
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!validRegex.test(h)) {
+        alert("Invalid email address!");
+        return false;
+    }
+    return true;
+}
+
+</script>
+</body>
+</html>
