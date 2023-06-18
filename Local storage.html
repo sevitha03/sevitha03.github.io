@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>local storage</title>
+</head>
+<body>
+    <form>
+        <label for="name">username</label>
+        <input type="text" id="name" placeholder="username"required>
+        <label for="pwd">password</label>
+        <input type="password" id="pwd" required>
+        <input type="submit">
+    </form>
+    <script>
+    function store()
+    {
+        if(typeof(storage)!=="undefined")
+        {
+            var x=document.getelementById("name").value;
+            localStorage.setItem("name",x);
+            var y=document.getelementById("pwd").value;
+            localStorage.setItem("password",y);
+        }
+    }    
+    </script>   
+</body>
+</html>
